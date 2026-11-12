@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "digrafolista.h"
+#include "../include/digrafolista.h"
 
 // Função auxiliar para contar o número real de linhas (vértices) no CSV
 int contar_linhas_csv(const char *filename) {

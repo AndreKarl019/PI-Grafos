@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "digrafolista.h"
+#include "../include/digrafolista.h"
 
 // Aloca o digrafo com um dado tamanho (número de vértices)
 Digrafo *criar_digrafo(int tamanho) {
@@ -29,7 +29,6 @@ void inserir_arco(Digrafo *g, int m, int n) {
     g->digrafo[m].lista = novo;
 }
 
-// Preenche os dados de um vértice específico no digrafo
 void criar_no(Digrafo *g, int vertice, char *nome, int *dependencias, float tempo_compilacao, int qtd_deps) {
     int idx = vertice - 1;
     
@@ -117,7 +116,6 @@ int *extrair_dependencias(char *str_deps, int *out_qtd) {
     return deps; 
 }
 
-// Lê o arquivo usando fscanf até o EOF e preenche o digrafo
 void montar_digrafo(FILE *arquivo, Digrafo *g) {
     if (arquivo == NULL || g == NULL) return;
     
