@@ -133,20 +133,13 @@ void montar_digrafo(FILE *arquivo, Digrafo *g) {
     char  aux_fim[16];
 
     while (fscanf(arquivo, "%d,%255[^,],%512[^]]]", &posicao, nome, deps_str) == 3) {
-    // 1. O fscanf parou bem no ']'
-    // 2. Agora precisamos avançar o ponteiro do arquivo para comer o que sobrou 
-    //    (seja uma aspa e uma vírgula, ou apenas a vírgula) até chegar no número float.
-    
     int ch;
-    // Consome tudo até encontrar a vírgula (o que engole a aspa '"' extra se ela existir)
     while ((ch = fgetc(arquivo)) != ',' && ch != EOF);
 
-    // 3. Agora que o arquivo está posicionado logo após a vírgula, lemos o float direto:
     if (fscanf(arquivo, "%f", &tempo_compilacao) != 1) {
-        break; // Tratamento de erro caso o float falhe
+        break; 
     }
 
-    // Consome a quebra de linha restante para preparar a próxima iteração
     while ((ch = fgetc(arquivo)) != '\n' && ch != EOF);
 
     int qtd_deps = 0;
